@@ -22,28 +22,19 @@
 
   <div class="flex gap-2">
     <button
-      class="px-3 py-1.5 text-xs rounded-full transition-colors"
-      class:bg-white/20={activeSection === 'events'}
-      class:text-white={activeSection === 'events'}
-      class:text-white/50={activeSection !== 'events'}
+      class="px-3 py-1.5 text-xs rounded-full transition-colors {activeSection === 'events' ? 'bg-white/20 text-white' : 'text-white/50'}"
       on:click={() => (activeSection = 'events')}
     >
       Events ({events.length})
     </button>
     <button
-      class="px-3 py-1.5 text-xs rounded-full transition-colors"
-      class:bg-white/20={activeSection === 'births'}
-      class:text-white={activeSection === 'births'}
-      class:text-white/50={activeSection !== 'births'}
+      class="px-3 py-1.5 text-xs rounded-full transition-colors {activeSection === 'births' ? 'bg-white/20 text-white' : 'text-white/50'}"
       on:click={() => (activeSection = 'births')}
     >
       Births ({births.length})
     </button>
     <button
-      class="px-3 py-1.5 text-xs rounded-full transition-colors"
-      class:bg-white/20={activeSection === 'deaths'}
-      class:text-white={activeSection === 'deaths'}
-      class:text-white/50={activeSection !== 'deaths'}
+      class="px-3 py-1.5 text-xs rounded-full transition-colors {activeSection === 'deaths' ? 'bg-white/20 text-white' : 'text-white/50'}"
       on:click={() => (activeSection = 'deaths')}
     >
       Deaths ({deaths.length})
