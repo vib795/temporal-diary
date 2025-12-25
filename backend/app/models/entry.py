@@ -12,7 +12,7 @@ from sqlalchemy import (
     CheckConstraint,
     UniqueConstraint,
 )
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.dialects.postgresql import UUID, JSONB
 from sqlalchemy.sql import func
 import uuid
 
@@ -49,6 +49,9 @@ class Entry(Base):
 
     # Privacy
     is_private = Column(Boolean, default=True)
+
+    # Context snapshot - stores the temporal context at time of writing
+    context_snapshot = Column(JSONB)
 
     created_at = Column(TIMESTAMP, server_default=func.now())
     updated_at = Column(TIMESTAMP, server_default=func.now(), onupdate=func.now())

@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import Optional, List
+from typing import Optional, List, Any
 from datetime import date, datetime
 from uuid import UUID
 
@@ -36,6 +36,7 @@ class EntryResponse(EntryBase):
     content_html: Optional[str] = None
     word_count: Optional[int] = None
     writing_time_seconds: Optional[int] = None
+    context_snapshot: Optional[Any] = None
     created_at: datetime
     updated_at: datetime
 
