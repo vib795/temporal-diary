@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.api import entries, context
+from app.database import engine, Base
+from app import models  # Import models to register them
 
 app = FastAPI(
     title="Temporal Diary API",
@@ -17,6 +19,16 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+# Create database tables on startup
+@app.on_event("startup")
+async def startup_event():
+    async with engine.begin() as conn:
+        # Create all tables
+        await conn.run_sync(Base.metadata.create_all)
+    print("✅ Database tables created successfully")
+
 
 # Include routers
 app.include_router(entries.router, prefix="/api/v1")
