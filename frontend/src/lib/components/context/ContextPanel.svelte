@@ -21,10 +21,7 @@
   <div class="flex border-b border-white/10">
     {#each tabs as tab}
       <button
-        class="flex-1 px-4 py-3 text-sm font-medium transition-colors"
-        class:text-white={activeTab === tab.id}
-        class:bg-white/10={activeTab === tab.id}
-        class:text-white/50={activeTab !== tab.id}
+        class="flex-1 px-4 py-3 text-sm font-medium transition-colors {activeTab === tab.id ? 'text-white bg-white/10' : 'text-white/50'}"
         on:click={() => (activeTab = tab.id)}
       >
         <span class="mr-1">{tab.icon}</span>
