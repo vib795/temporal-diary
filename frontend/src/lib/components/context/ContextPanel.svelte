@@ -9,11 +9,11 @@
 
   let activeTab: 'space' | 'history' | 'weather' = 'space';
 
-  const tabs = [
+  const tabs: Array<{ id: 'space' | 'history' | 'weather'; label: string; icon: string }> = [
     { id: 'space', label: 'Space', icon: '🌌' },
     { id: 'history', label: 'History', icon: '📜' },
     { id: 'weather', label: 'Weather', icon: '🌤️' },
-  ] as const;
+  ];
 </script>
 
 <div class="bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden">
